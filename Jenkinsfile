@@ -1,23 +1,21 @@
-stage('Build') {
-    node {
-        checkout scm
-        echo "Building..."
-        docker.withServer("unix:///var/run/docker.sock") {
-            def app = docker.build("datagridsys/jenkins-test", "test")
-        }
+node {
+
+    stage "build"
+
+    checkout scm
+
+    def img = docker.build("datagridsys/jenkins-test", "test")
+
+    stage "publish"
+
+    docker.withRegistry('doker.io', '') {
+        img.push
     }
-}
 
 
-stage('Test') {
-    node {
-        echo "Testing..."
-    }
-}
-
-
-stage('Deploy') {
-    node {
+    stage('Deploy') {
         echo "Deploying..."
     }
+
 }
+
