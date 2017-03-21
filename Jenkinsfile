@@ -2,7 +2,7 @@ stage('Build') {
     node {
         checkout scm
         echo "Building..."
-        withTool('local') {
+        docker.withTool("local") {
             def app = docker.build("datagridsys/jenkins-test", "test")
         }
     }
