@@ -4,7 +4,7 @@ version: 1
 
 components:
   test:
-    image: datagridsys/jenkins-test:latest
+    image: datagridsys/jenkins-test:${test_ver}
     visual:
       x: 300
       y: 150
