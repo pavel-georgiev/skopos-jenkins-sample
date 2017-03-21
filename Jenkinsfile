@@ -1,12 +1,11 @@
 node {
 
-    stage "build"
-
-    checkout scm
-
-    def version = readFile('test/version').trim()
-
-    def img = docker.build("datagridsys/jenkins-test:${version}", "test")
+    stage('Build') {
+        echo "Building..."
+        checkout scm
+        def version = readFile('test/version').trim()
+        def img = docker.build("datagridsys/jenkins-test:${version}", "test")
+    }
 
     stage "publish"
 
