@@ -4,7 +4,7 @@ node {
 
     checkout scm
 
-    def version = readFile('.test/version').trim()
+    def version = readFile('test/version').trim()
 
     def img = docker.build("datagridsys/jenkins-test:${version}", "test")
 
