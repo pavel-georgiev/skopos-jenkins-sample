@@ -1,0 +1,10 @@
+doctype: com.datagridsys.doctype/skopos/model
+version: 1
+
+
+components:
+  test:
+    image: datagridsys/jenkins-test:latest
+    visual:
+      x: 300
+      y: 150
