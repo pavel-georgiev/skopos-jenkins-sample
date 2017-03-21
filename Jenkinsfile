@@ -15,6 +15,9 @@ node {
     sh "{ echo 'vars:'; echo '  test_ver: $version'; }  > env-build.yaml"
 
     // Run Skopos CLI
+
+    docker.image("datagridsys/skopos:stage").withRun(, "/skopos/engine --help")
+
     sh "/skopos/bin/sks-ctl run -project ${JOB_NAME} -wait -bind 172.17.0.1:8090 -env env.yaml -env env-build.yaml model.yaml"
 
     // Optionally, run tests against the deployed app
