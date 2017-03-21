@@ -10,7 +10,7 @@ node {
 
     stage "publish"
 
-    docker.withRegistry('doker.io', '984001da-18d6-4f15-9a16-bca57f217331') {
+    docker.withRegistry('https://doker.io', '984001da-18d6-4f15-9a16-bca57f217331') {
         img.push "${version}"
     }
 
