@@ -5,7 +5,6 @@ stage('Build') {
     }
 }
 
-#
 stage('Test') {
     node {
         echo "Testing..."
