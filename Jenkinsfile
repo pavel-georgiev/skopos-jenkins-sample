@@ -2,8 +2,8 @@ node {
 
     stage "build"
     checkout scm
-    def version = readFile('test/version').trim()
-    def img = docker.build("datagridsys/sample-service:${version}", "sample-service")
+    def version = readFile('sample-service/version').trim()
+    def img = docker.build("${env.SAMPLE_DOCKER_REPO}:${version}", "sample-service")
 
     stage "publish"
     docker.withRegistry('https://index.docker.io/v1/', 'sample-docker-registry-id') {
@@ -12,7 +12,9 @@ node {
 
     stage "deploy"
     // Create an env file that defines the version of the container
-    sh "{ echo 'vars:'; echo '  test_ver: $version'; }  > env-build.yaml"
+    sh "echo 'vars:' > env-build.yaml"
+    sh "echo '  sample_service_ver: $version' >> env-build.yaml"
+    sh "echo '  sample_service_img: ${env.SAMPLE_DOCKER_REPO}' >> env-build.yaml"
 
     // Run Skopos CLI
     // Note: the --replace-all forces a re-deploy every time the pipeline runs
