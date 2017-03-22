@@ -24,7 +24,7 @@ We start with the stock Jenkins container and install Docker, Jenkins docker plu
 
 ```
 # Checkout your fork of this repo
-git checkout https://github.com/my-user/my-repo # change to actual repo
+git clone https://github.com/my-user/my-repo # change to actual repo
 cd my-repo # change to actual dir
 
 # Extract Skopos CLI
