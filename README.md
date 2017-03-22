@@ -65,7 +65,10 @@ docker run                                         \
 Open Jenkins' GUI (available on port 8888) and perform the following actions:
 
  * Setup Jenkins account (follow instructions on the initial screen, to get initial password, run this `docker exec -ti jenkins cat /var/jenkins_home/secrets/initialAdminPassword`). When asked to install plugins, click on 'install suggested plugins'
- * Add authentication credentials for your docker registry. Go to Jenkins -> Manage Jenkins -> Configure System -> Docker Plugin -> Add registry -> Docker Registry. Under registry type in `docker.io` (or the host of your private registry if you are not using Docker Hub). Create new credentials under credentials -> add -> Jenkins. If you are using Docker Hub for your registry, set kind to 'Username with password' and provide your username/password for Docker Hub and set the credentials ID to `sample-docker-registry-id` (you can change that, but you will need to update your Jenkinsfile later). After creating the credentials, on the Jenkins configuration screen, make sure under `Docker Plugin` you have a registry with the specified host and credentials (select from the dropdown the credentials that you created above). Click Save at the bottom of the page.
+ * Go to Jenkins -> Manage Jenkins -> Configure System -> Docker Plugin -> Add registry -> Docker Registry. Under registry type in `docker.io` (or the host of your private registry if you are not using Docker Hub). Create new credentials under credentials -> add -> Jenkins. If you are using Docker Hub for your registry, set kind to 'Username with password' and provide your username/password for Docker Hub and set the credentials ID to `sample-docker-registry-id` (you can change that, but you will need to update your Jenkinsfile later).
+![jenkins-credentials](img/jenkins-credentials.png)
+  * After creating the credentials, on the Jenkins configuration screen, make sure under `Docker Plugin` you have a registry with the specified host and credentials (select from the dropdown the credentials that you created above). Click Save at the bottom of the page.
+![jenkins-docker-config](img/jenkins-docker-config.png)
 
 ## Create a New Jenkins Job
 
