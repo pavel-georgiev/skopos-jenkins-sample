@@ -18,6 +18,9 @@ The example uses an explicit semantic version (i.e. 1.4.8) for the service and d
 
 You need your own fork in order to be able to make changes. To do so - use the 'fork' link in the upper right corner of the github page for this repository.
 
+After doing the fork, modify the `Jenkinsfile` in your fork so that the `DOCKER_REPO` variable points to the docker repository where build artifacts will be pushed. If you are using Docker Hub, that would look like `your-dockerhub-username/sample-service`.
+
+
 ## Build (or Download) Jenkins Container
 
 We start with the stock Jenkins container and install Docker, Jenkins docker plugin and Skopos CLI on top. If you prefer using a ready-made image instead of building it from scratch, you can just `docker pull datagridsys/jenkins-skopos`.
@@ -44,14 +47,13 @@ docker build -f jenkins-skopos.Dockerfile -t datagridsys/jenkins-skopos .
 
 
 ## Start Jenkins Container
-Run the following command on a docker swarm manager node. Change the value of the  `SAMPLE_DOCKER_REPO` variable below to be a docker repository where build artifacts will be pushed. If you are using Docker Hub, that would look like `your-username/sample-service`.
+Run the following command on a docker swarm manager node.
 
 ```
 docker run                                         \
     -d                                             \
     --name jenkins                                 \
     --restart=unless-stopped                       \
-    -e SAMPLE_DOCKER_REPO="changeme"               \
     -p 8888:8080                                   \
     -v /var/run/docker.sock:/var/run/docker.sock   \
     --group-add=$(stat -c %g /var/run/docker.sock) \

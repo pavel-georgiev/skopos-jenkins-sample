@@ -1,9 +1,13 @@
 node {
+    // change that to the docker repository where build artifacts will be
+    // pushed. If you are using Docker Hub, that would look like
+    // your-username/sample-service
+    def DOCKER_REPO = "datagridsys/sample-service"
 
     stage "build"
     checkout scm
     def version = readFile('sample-service/version').trim()
-    def img = docker.build("${env.SAMPLE_DOCKER_REPO}:${version}", "sample-service")
+    def img = docker.build("${DOCKER_REPO}:${version}", "sample-service")
 
     stage "publish"
     docker.withRegistry('https://index.docker.io/v1/', 'sample-docker-registry-id') {
@@ -14,7 +18,7 @@ node {
     // Create an env file that defines the version of the container
     sh "echo 'vars:' > env-build.yaml"
     sh "echo '  sample_service_ver: $version' >> env-build.yaml"
-    sh "echo '  sample_service_img: ${env.SAMPLE_DOCKER_REPO}' >> env-build.yaml"
+    sh "echo '  sample_service_img: ${DOCKER_REPO}' >> env-build.yaml"
 
     // Run Skopos CLI
     // Note: the --replace-all forces a re-deploy every time the pipeline runs
