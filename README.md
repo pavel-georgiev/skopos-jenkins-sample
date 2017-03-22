@@ -1,6 +1,10 @@
 Sample Jenkins Integration for Skopos
 ===========================
-The following document describes how to setup CI/CD with Jenkins and Skopos. For simplicity, the application that we will be deploying contains one service only, but the workflow below work exactly the same with multiple services part of the same application.
+The following document describes how to setup a CI/CD pipeline with Jenkins and Skopos. The example illustrates how code changes can be build with Jenkins and deployed with Skopos. It can be used as a baseline for creating more advanced pipelines that involve deploying in multiple stages (i.e. deploy to QA cluster, run tests, deploy to stage/production, etc).
+
+For simplicity, the application that we will be deploying contains one service only, but the workflow below works exactly the same with complex applications.
+
+The example uses an explicit semantic version (i.e. 1.4.8) for the service and does *not* use Skopos' auto-pilot. If you use auto-pilot, there is no need to integrate Skopos with your CI system as it will monitor for changes in your docker registry and automatically deploy new versions of the same tag when they become available (i.e. your pipeline ends with a push of an artifact to the correct docker repository and Skopos picks it up from there).
 
 
 ## Prerequisites
