@@ -3,7 +3,7 @@ version: 1
 
 
 components:
-  sample-service:
+  sample:
     # The image name and tag are specified as variables in order to make this
     # sample easier to use, i.e. allow them to be passed as environment Jenkins
     image: ${sample_service_img}:${sample_service_ver}
