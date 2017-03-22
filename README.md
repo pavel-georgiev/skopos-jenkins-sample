@@ -1,6 +1,6 @@
 Sample Jenkins Integration for Skopos
 ===========================
-The following document describes how to setup a CI/CD pipeline with Jenkins and Skopos. The example illustrates how code changes can be build with Jenkins and deployed with Skopos. It can be used as a baseline for creating more advanced pipelines that involve deploying in multiple stages (i.e. deploy to QA cluster, run tests, deploy to stage/production, etc).
+The following document describes how to setup a CI/CD pipeline with Jenkins and Skopos. The example illustrates how code changes can be built with Jenkins and deployed with Skopos. It can be used as a baseline for creating more advanced pipelines that involve deploying in multiple stages (i.e. deploy to QA cluster, run tests, deploy to stage/production, etc).
 
 For simplicity, the application that we will be deploying contains one service only, but the workflow below works exactly the same with complex applications.
 
