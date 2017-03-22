@@ -91,6 +91,3 @@ To do so:
  * Open the Jenkins UI and Skopos' UI and verify that Skopos runs a deploy (you will see the version change to whatever you set in the step above) and that the Jenkins job succeeds.
 
 
-
-
-Login to your Skopos interface and verify that
