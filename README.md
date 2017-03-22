@@ -14,11 +14,19 @@ The example uses an explicit semantic version (i.e. 1.4.8) for the service and d
  * Write access to a docker registry - you can sign in for a free [Docker hub](https://hub.docker.com/) account and [create a repository](https://hub.docker.com/add/repository/)
 
 
+## Fork This GitHub Repo
+
+You need your own fork in order to be able to make changes. To do so - use the 'fork' link in the upper right corner of the github page for this repository.
+
 ## Build (or Download) Jenkins Container
 
 We start with the stock Jenkins container and install Docker, Jenkins docker plugin and Skopos CLI on top. If you prefer using a ready-made image instead of building it from scratch, you can just `docker pull datagridsys/jenkins-skopos`.
 
 ```
+# Checkout your fork of this repo
+git checkout https://github.com/my-user/my-repo # change to actual repo
+cd my-repo # change to actual dir
+
 # Extract Skopos CLI
 mkdir -p bin
 rm -rf bin/sks-ctl
@@ -56,10 +64,6 @@ Open Jenkins' GUI (available on port 8888) and perform the following actions:
 
  * Setup Jenkins account (follow instructions on the initial screen, to get initial password, run this `docker exec -ti jenkins cat /var/jenkins_home/secrets/initialAdminPassword`). When asked to install plugins, click on 'install suggested plugins'
  * Add authentication credentials for your docker registry. Go to Jenkins -> Manage Jenkins -> Configure System -> Docker Plugin -> Add registry -> Docker Registry. Under registry type in `docker.io` (or the host of your private registry if you are not using Docker Hub). Create new credentials under credentials -> add -> Jenkins. If you are using Docker Hub for your registry, set kind to 'Username with password' and provide your username/password for Docker Hub and set the credentials ID to `sample-docker-registry-id` (you can change that, but you will need to update your Jenkinsfile later). After creating the credentials, on the Jenkins configuration screen, make sure under `Docker Plugin` you have a registry with the specified host and credentials (select from the dropdown the credentials that you created above). Click Save at the bottom of the page.
-
-## Fork This GitHub Repo
-
-You need your own fork in order to be able to make changes. To do so - use the 'fork' link in the upper right corner of the github page for this repository.
 
 ## Create a New Jenkins Job
 
