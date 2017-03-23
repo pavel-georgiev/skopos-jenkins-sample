@@ -75,9 +75,11 @@ Open Jenkins' GUI (available on port 8888) and perform the following actions:
  * Go to Jenkins -> New Item, select Pipeline and give your job a name, i.e. 'skopos_sample'. Click OK.
 ![jenkins-new-job](img/jenkins-new-job.png)
 
- * On the configure screen for your new job, check Build Triggers -> Poll SCM and type `* * * * *` in the text area. Under Pipeline, select Definition: Pipeline script from SCM. Select SCM -> Git and type your forked repository URL (i.e. https://github.com/my-user/my-repo) under 'Repository URL'.
+ * On the configure screen for your new job, check Build Triggers -> Poll SCM and type `* * * * *` in the text area (this causes Jenkins to poll your git repository every minute). Under Pipeline, select Definition: Pipeline script from SCM. Select SCM -> Git and type your forked repository URL (i.e. https://github.com/my-user/my-repo) under 'Repository URL'.
 
 Click Apply and Save at the bottom of the screen.
+
+![jenkins-new-job2](img/jenkins-new-job2.png)
 
 ## Run Jenkins Job Manually
 
@@ -93,5 +95,7 @@ After you make sure your Jenkins job can be run manually, you can make a change 
 To do so:
  * Go to your forked github repository and bump the version in the `sample-service/version` file (you can do that in the web UI). Commit the change.
  * Open the Jenkins UI and Skopos' UI and verify that Skopos runs a deploy (you will see the version change to whatever you set in the step above) and that the Jenkins job succeeds.
+
+![jenkins-job-run](img/jenkins-job-run.png)
 
 
