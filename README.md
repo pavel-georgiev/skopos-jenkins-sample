@@ -72,11 +72,10 @@ Open Jenkins' GUI (available on port 8888) and perform the following actions:
 
 ## Create a New Jenkins Job
 
-Go to Jenkins -> New Item, select Pipeline and give your job a name, i.e. 'skopos_sample'. Click OK.
+ * Go to Jenkins -> New Item, select Pipeline and give your job a name, i.e. 'skopos_sample'. Click OK.
+![jenkins-new-job](img/jenkins-new-job.png)
 
-On the configure screen for your new job, check Build Triggers -> Poll SCM and type `* * * * *` in the text area.
-
-Under Pipeline, select Definition: Pipeline script from SCM. Select SCM -> Git and type your forked repository URL (i.e. https://github.com/my-user/my-repo) under 'Repository URL'.
+ * On the configure screen for your new job, check Build Triggers -> Poll SCM and type `* * * * *` in the text area. Under Pipeline, select Definition: Pipeline script from SCM. Select SCM -> Git and type your forked repository URL (i.e. https://github.com/my-user/my-repo) under 'Repository URL'.
 
 Click Apply and Save at the bottom of the screen.
 
