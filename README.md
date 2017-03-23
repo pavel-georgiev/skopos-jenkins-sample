@@ -94,7 +94,7 @@ After you make sure your Jenkins job can be run manually, you can make a change 
 
 To do so:
  * Go to your forked github repository and bump the version in the `sample-service/version` file (you can do that in the web UI). Commit the change.
- * Open the Jenkins UI and Skopos' UI and verify that Skopos runs a deploy (you will see the version change to whatever you set in the step above) and that the Jenkins job succeeds.
+ * Open the Jenkins UI and Skopos' UI and verify that Skopos runs a deploy (you will see the version change to whatever you set in the step above) and that the Jenkins job succeeds. After the deploy is done and the Jenkins jobs completes, your should be able to open our sample-service (on port 8889 in our example) and see that it runs the version that you set in the previous step.
 
 ![jenkins-job-run](img/jenkins-job-run.png)
 
