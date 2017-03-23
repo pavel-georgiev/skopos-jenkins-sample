@@ -30,17 +30,6 @@ We start with the stock Jenkins container and install Docker, Jenkins docker plu
 git clone https://github.com/my-user/my-repo # change to actual repo
 cd my-repo # change to actual dir
 
-# Extract Skopos CLI
-mkdir -p bin
-rm -rf bin/sks-ctl
-touch bin/sks-ctl
-docker run                                    \
-    --rm                                      \
-    -v $(pwd)/bin/sks-ctl:/skopos/bin/sks-ctl \
-    --entrypoint "/bin/bash"                  \
-    datagridsys/skopos:stage                  \
-    -c 'cp -a engine /skopos/bin/sks-ctl'
-
 # Build Jenkins image
 docker build -f jenkins-skopos.Dockerfile -t datagridsys/jenkins-skopos .
 ```

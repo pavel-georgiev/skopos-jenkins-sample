@@ -1,23 +1,9 @@
 FROM jenkins
 
 # Install Skopos CLI
-# For this to work, you need to extract the Skopos CLI in this directory first
-# i.e.
-#
-# mkdir -p bin
-# rm -rf bin/sks-ctl
-# touch bin/sks-ctl
-# docker run                               \
-#     --rm                                 \
-#     -v $(pwd)/bin/sks-ctl:/skopos/bin/sks-ctl \
-#     --entrypoint "/bin/bash"             \
-#     datagridsys/skopos:stage              \
-#     -c 'cp -a engine /skopos/bin/sks-ctl'
-
-COPY bin/sks-ctl /skopos/bin/
-
-# temporarily se uer to root to be able to use apt
+ADD https://s3.amazonaws.com/datagrid-public/sks-ctl /skopos/bin/
 USER root
+RUN chmod 755 /skopos/bin/sks-ctl
 
 # Install docker
 RUN apt-get update && \
